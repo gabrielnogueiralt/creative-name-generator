@@ -4,11 +4,11 @@ from collections import defaultdict
 import pandas as pd
 import unidecode
 import nltk as nltk
+from scipy import spatial
 from nltk.corpus import stopwords
 import numpy as np
 import spacy
 import re
-import csv
 
 # Get Data
 boys = pd.read_csv('scripts/data/boys.csv')
@@ -37,8 +37,15 @@ cleaning_girls = [cleaning(doc) for doc in nlp.pipe(brief_cleaning_girls, batch_
 boys['clean'] = cleaning_boys
 girls['clean'] = cleaning_girls
 
-boys.to_csv('scripts/data/boys.csv', sep='\t', encoding='utf-8')
-girls.to_csv('scripts/data/girls.csv', sep='\t', encoding='utf-8')
+boys['w2v'] = [doc.vector for doc in nlp.pipe(cleaning_boys, batch_size=1000)]
+girls['w2v'] = [doc.vector for doc in nlp.pipe(cleaning_girls, batch_size=1000)]
+
+# print(boys['clean'][0])
+# print(boys['clean'][4])
+# print(spatial.distance.cosine(boys['w2v'][0], boys['w2v'][0]))
+
+boys.to_csv('scripts/data/final_boys.csv', sep='\t', encoding='utf-8')
+girls.to_csv('scripts/data/final_girls.csv', sep='\t', encoding='utf-8')
 
 
 
