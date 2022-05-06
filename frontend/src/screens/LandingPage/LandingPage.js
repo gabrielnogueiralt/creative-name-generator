@@ -10,7 +10,7 @@ function LandingPage({ history }) {
 
   useEffect(() => {
     if (userInfo) {
-      history.push("/mynotes");
+      history.push("/domain");
     }
   }, [history, userInfo]);
 
@@ -20,13 +20,14 @@ function LandingPage({ history }) {
         <Row>
           <div className="intro-text">
             <div>
-              <h1 className="title">Welcome to Note Zipper</h1>
-              <p className="subtitle">One Safe place for all your notes.</p>
+              <h1 className="title">Bem vindo(a)</h1>
+              <h1 className="title">ao gerador de nomes</h1>
+              <p className="subtitle">Tome inspirações para o nome do seu bebê.</p>
             </div>
             <div className="buttonContainer">
               <Link to="/login">
                 <Button size="lg" className="landingbutton">
-                  Login
+                  Entrar
                 </Button>
               </Link>
               <Link to="/register">
@@ -35,7 +36,7 @@ function LandingPage({ history }) {
                   size="lg"
                   className="landingbutton"
                 >
-                  Signup
+                  Cadastrar
                 </Button>
               </Link>
             </div>

@@ -68,48 +68,48 @@ function RegisterScreen({ history }) {
   };
 
   return (
-    <MainScreen title="REGISTER">
+    <MainScreen title="Cadastro">
       <div className="loginContainer">
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
         {loading && <Loading />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="name">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Nome</Form.Label>
             <Form.Control
               type="name"
               value={name}
-              placeholder="Enter name"
+              placeholder="Digite seu nome"
               onChange={(e) => setName(e.target.value)}
             />
           </Form.Group>
 
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
               value={email}
-              placeholder="Enter email"
+              placeholder="Digite o seu email"
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Senha</Form.Label>
             <Form.Control
               type="password"
               value={password}
-              placeholder="Password"
+              placeholder="Digite a sua senha"
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
 
           <Form.Group controlId="confirmPassword">
-            <Form.Label>Confirm Password</Form.Label>
+            <Form.Label>Confirme a sua senha</Form.Label>
             <Form.Control
               type="password"
               value={confirmpassword}
-              placeholder="Confirm Password"
+              placeholder="Digite a sua senha"
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </Form.Group>
@@ -118,23 +118,23 @@ function RegisterScreen({ history }) {
             <ErrorMessage variant="danger">{picMessage}</ErrorMessage>
           )}
           <Form.Group controlId="pic">
-            <Form.Label>Profile Picture</Form.Label>
+            <Form.Label>Foto do perfil</Form.Label>
             <Form.File
               onChange={(e) => postDetails(e.target.files[0])}
               id="custom-file"
               type="image/png"
-              label="Upload Profile Picture"
+              label="Faça o upload de uma foto"
               custom
             />
           </Form.Group>
 
           <Button variant="primary" type="submit">
-            Register
+            Cadastrar
           </Button>
         </Form>
         <Row className="py-3">
           <Col>
-            Have an Account ? <Link to="/login">Login</Link>
+            Já possui uma conta? <Link to="/login">Entrar</Link>
           </Col>
         </Row>
       </div>
