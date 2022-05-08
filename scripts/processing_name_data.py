@@ -40,12 +40,18 @@ girls['clean'] = cleaning_girls
 boys['w2v'] = [doc.vector for doc in nlp.pipe(cleaning_boys, batch_size=1000)]
 girls['w2v'] = [doc.vector for doc in nlp.pipe(cleaning_girls, batch_size=1000)]
 
-# print(boys['clean'][0])
-# print(boys['clean'][4])
-# print(spatial.distance.cosine(boys['w2v'][0], boys['w2v'][0]))
+# print(boys['meaning'][5])
+# print('-----------------')
+# print(boys['meaning'][54])
+# print('-----------------')
+# print(boys['meaning'][560])
+# print('-----------------')
+# print(spatial.distance.cosine(boys['w2v'][5], boys['w2v'][54]))
+# print(spatial.distance.cosine(boys['w2v'][5], boys['w2v'][560]))
+# print(spatial.distance.cosine(boys['w2v'][54], boys['w2v'][560]))
 
-boys.to_csv('scripts/data/final_boys.csv', sep='\t', encoding='utf-8')
-girls.to_csv('scripts/data/final_girls.csv', sep='\t', encoding='utf-8')
+boys.to_json('scripts/data/boys.json')
+girls.to_json('scripts/data/girls.json')
 
 
 
