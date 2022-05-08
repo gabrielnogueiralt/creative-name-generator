@@ -1,19 +1,20 @@
 import Name from "../models/nameModel.js";
 import asyncHandler from "express-async-handler";
 import vectorSum from "../utils/vectorSum.js";
+import recomend from "../utils/recomendation.js";
 
 const getNewRecomendation = asyncHandler(async (req, res) => {
     const names = req.body['names'];
     const query = req.body['query'];
     const classification = req.body['classification'];
     const iterations = req.body['iterations'];
-    const list = req.body['list'];
-    console.log(names)
+    var list = req.body['list'];
 
+    list = list.concat(names.map((e) => e['name']));
     const data = await Name.find({
         $and: [
             { 'classification': classification },
-            { 'name': { $ne: list } }
+            { 'name': { $nin: list } }
         ]
     }).exec();
 
@@ -21,11 +22,11 @@ const getNewRecomendation = asyncHandler(async (req, res) => {
     if (query.length > 0) {
         newQuery = vectorSum(query, newQuery);
     }
-    const recomendation = ['Julio', 'Marcelo', 'Pedro', 'João', 'Lucas'];
+    const recomendation = recomend(data, newQuery);;
 
     return res.json({
         'names': recomendation,
-        'list': list.concat(names.map((e) => e['name'])),
+        'list': list,
         'query': newQuery,
         'iterations': (iterations - 1),
         'classification': classification,
@@ -59,7 +60,7 @@ const getFinalRecomendation = asyncHandler(async (req, res) => {
     if (query.length > 0) {
         newQuery = vectorSum(query, newQuery);
     }
-    const recomendation = ['Julio', 'Marcelo', 'Pedro', 'João', 'Lucas'];
+    const recomendation = recomend(data, newQuery);
 
     return res.json({
         'names': recomendation[0],
