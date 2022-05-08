@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import {
   Container,
   Form,
-  FormControl,
   Nav,
   Navbar,
   NavDropdown,
@@ -38,30 +37,22 @@ function Header({ setSearch }) {
           <Nav>
             {userInfo ? (
               <>
-                <Nav.Link href="/domain">My Notes</Nav.Link>
                 <NavDropdown
                   title={`${userInfo.name}`}
                   id="collasible-nav-dropdown"
                 >
                   <NavDropdown.Item href="/profile">
-                    {/* <img
-                      alt=""
-                      src={`${userInfo.pic}`}
-                      width="25"
-                      height="25"
-                      style={{ marginRight: 10 }}
-                    /> */}
-                    My Profile
+                    Meu perfil
                   </NavDropdown.Item>
 
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={logoutHandler}>
-                    Logout
+                    Sair
                   </NavDropdown.Item>
                 </NavDropdown>
               </>
             ) : (
-              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/login">Entrar</Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>
