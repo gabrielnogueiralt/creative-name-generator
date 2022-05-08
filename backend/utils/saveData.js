@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import dotenv from "dotenv";
 import Name from "../models/nameModel.js";
 import connectDB from "../config/db.js";
 import fs from "fs";
@@ -11,17 +11,19 @@ const saveData = async (jsonPath) => {
             return;
         }
         const data = JSON.parse(jsonString);
-        connectDB();
-        for (const [key, name] of Object.entries(data['name'])) {
-            const newName = {
-                'name': name,
-                'classification': data['classification'][key],
-                'frequency': data['frequency'][key],
-                'meaning': data['meaning'][key],
-                'vector': data['w2v'][key],
+        dotenv.config({path:'../../.env'});
+        connectDB().then(() => {
+            for (const [key, name] of Object.entries(data['name'])) {
+                const newName = {
+                    'name': name,
+                    'classification': data['classification'][key],
+                    'frequency': data['frequency'][key],
+                    'meaning': data['meaning'][key],
+                    'vector': data['w2v'][key],
+                }
+                Name.create(newName);
             }
-            Name.create(newName);
-        }
+        })
     })
 }
 
