@@ -5,6 +5,7 @@ import colors from "colors";
 import path from "path";
 
 import noteRoutes from "./routes/noteRoutes.js";
+import nameRoutes from "./routes/nameRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
@@ -16,6 +17,7 @@ const app = express(); // main thing
 
 app.use(express.json()); // to accept json data
 
+app.use("/api/names", nameRoutes);
 app.use("/api/notes", noteRoutes);
 app.use("/api/users", userRoutes);
 

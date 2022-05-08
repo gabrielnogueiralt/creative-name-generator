@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import random from 'mongoose-random';
 
 const nameSchema = mongoose.Schema({
     name: {
