@@ -11,7 +11,7 @@ const saveData = async (jsonPath) => {
             return;
         }
         const data = JSON.parse(jsonString);
-        dotenv.config({path:'../../.env'});
+        dotenv.config({ path: '../../.env' });
         connectDB().then(() => {
             for (const [key, name] of Object.entries(data['name'])) {
                 const newName = {
@@ -25,6 +25,7 @@ const saveData = async (jsonPath) => {
             }
         })
     })
+    connectDB.close();
 }
 
 saveData('../../scripts/data/boys.json');

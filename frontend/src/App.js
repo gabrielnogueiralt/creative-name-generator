@@ -4,10 +4,9 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import LandingPage from "./screens/LandingPage/LandingPage";
 import Domain from "./screens/Domain/Domain";
-import SingleNote from "./screens/SingleNote/SingleNote";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
-import CreateNote from "./screens/SingleNote/CreateNote";
+import Names from "./screens/Names/Names";
 import { useState } from "react";
 import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
 
@@ -27,8 +26,7 @@ function App() {
             <Domain search={search} history={history} />
           )}
         />
-        <Route path="/note/:id" component={SingleNote} />
-        <Route path="/createnote" component={CreateNote} />;
+        <Route path="/names" component={Names} />;
         <Route path="/profile" component={ProfileScreen} />
       </main>
       <Footer />
