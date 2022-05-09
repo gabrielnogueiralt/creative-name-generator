@@ -64,7 +64,7 @@ const ProfileScreen = ({ location, history }) => {
   };
 
   return (
-    <MainScreen title="EDIT PROFILE">
+    <MainScreen title="Editar perfil">
       <div>
         <Row className="profileContainer">
           <Col md={6}>
@@ -77,37 +77,37 @@ const ProfileScreen = ({ location, history }) => {
               )}
               {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
               <Form.Group controlId="name">
-                <Form.Label>Name</Form.Label>
+                <Form.Label>Nome</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter Name"
+                  placeholder="Digite seu nome"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 ></Form.Control>
               </Form.Group>
               <Form.Group controlId="email">
-                <Form.Label>Email Address</Form.Label>
+                <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Enter Email"
+                  placeholder="Digite seu email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 ></Form.Control>
               </Form.Group>
               <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Senha</Form.Label>
                 <Form.Control
                   type="password"
-                  placeholder="Enter Password"
+                  placeholder="Digite a senha"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 ></Form.Control>
               </Form.Group>
               <Form.Group controlId="confirmPassword">
-                <Form.Label>Confirm Password</Form.Label>
+                <Form.Label>Confirme sua senha</Form.Label>
                 <Form.Control
                   type="password"
-                  placeholder="Confirm Password"
+                  placeholder="Confirme sua senha"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 ></Form.Control>
@@ -116,17 +116,17 @@ const ProfileScreen = ({ location, history }) => {
                 <ErrorMessage variant="danger">{picMessage}</ErrorMessage>
               )}
               <Form.Group controlId="pic">
-                <Form.Label>Change Profile Picture</Form.Label>
+                <Form.Label>Mude sua foto do perfil</Form.Label>
                 <Form.File
                   onChange={(e) => postDetails(e.target.files[0])}
                   id="custom-file"
                   type="image/png"
-                  label="Upload Profile Picture"
+                  label="Carregue sua foto"
                   custom
                 />
               </Form.Group>
               <Button type="submit" varient="primary">
-                Update
+                Atualizar
               </Button>
             </Form>
           </Col>
