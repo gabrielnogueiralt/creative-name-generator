@@ -1,7 +1,7 @@
 {
-  "name": "notezipper",
+  "name": "cegonha-app",
   "version": "1.0.0",
-  "description": "Notes Taking App",
+  "description": "Baby name choicer",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -13,7 +13,7 @@
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d"
   },
-  "author": "Piyush Agarwal",
+  "author": "Accs2",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
