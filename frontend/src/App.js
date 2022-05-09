@@ -7,6 +7,7 @@ import Domain from "./screens/Domain/Domain";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 import Names from "./screens/Names/Names";
+import Final from "./screens/Final/Final";
 import { useState } from "react";
 import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
 
@@ -27,6 +28,7 @@ function App() {
           )}
         />
         <Route path="/names" component={Names} />;
+        <Route path="/final" component={Final} />;
         <Route path="/profile" component={ProfileScreen} />
       </main>
     </Router>

@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
@@ -8,6 +9,7 @@ import axios from "axios";
 function Names() {
 
   const [names, setNames] = React.useState([]);
+
   const [initialNames, setInitialNames] = React.useState(() => {
     const names = localStorage.getItem("names");
     if (names) {
@@ -16,6 +18,8 @@ function Names() {
       return [];
     }
   });
+
+  const history = useHistory();
 
   const startGettingNames = async () => {
     if (names.length < 2) {
@@ -52,6 +56,7 @@ function Names() {
       await axios.post("/api/names/final", payload).then(res => {
         console.log(res.data);
         localStorage.setItem("names", JSON.stringify(res.data));
+        history.push("/final");
       }
       ).catch(err => {
         console.log(err);
