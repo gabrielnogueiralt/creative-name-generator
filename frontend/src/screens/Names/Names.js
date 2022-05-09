@@ -50,8 +50,6 @@ function Names() {
               }}
             />
             <h3 style={{ width: "40%" }}>{item}</h3>
-            <p>Significado: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis elementum nibh tellus molestie nunc non blandit. Eu nisl nunc mi ipsum faucibus vitae aliquet nec.</p>
-
             <br />
           </div>
         </React.Fragment>

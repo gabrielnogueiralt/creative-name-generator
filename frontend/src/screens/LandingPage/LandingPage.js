@@ -21,7 +21,7 @@ function LandingPage({ history }) {
           <div className="intro-text">
             <div>
               <h1 className="title">Bem vindo(a)</h1>
-              <h1 className="title">ao gerador de nomes</h1>
+              <h1 className="title">ao Cegonha</h1>
               <p className="subtitle">Tome inspirações para o nome do seu bebê.</p>
             </div>
             <div className="buttonContainer">
