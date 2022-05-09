@@ -2,10 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
+import axios from "axios";
 
-const names = ['name1', 'name2', 'name3', 'name4', 'name5'];
 
 function Names() {
+
+  const [names, setNames] = React.useState([]);
+
+  const URL = "http://localhost:5000";
+
+  const startGettingNames = () => {
+    axios.post(`${URL}/api/names/`, {
+      classification: "M",
+      iteractions: 5
+    }).then(res => {
+      console.log(res.data);
+    }
+    ).catch(err => {
+      console.log(err);
+    }
+    );
+  }
 
   const handleChange = (e) => {
     countChecked()

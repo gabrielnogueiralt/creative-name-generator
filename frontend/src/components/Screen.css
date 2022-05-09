@@ -4,6 +4,8 @@
   min-height: 93vh;
   display: flex;
   padding: 10px 0;
+  background-color: #191919;
+  color: white;
 }
 .page {
   width: 100%;

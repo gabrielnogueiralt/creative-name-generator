@@ -29,7 +29,6 @@ function App() {
         <Route path="/names" component={Names} />;
         <Route path="/profile" component={ProfileScreen} />
       </main>
-      <Footer />
     </Router>
   );
 }

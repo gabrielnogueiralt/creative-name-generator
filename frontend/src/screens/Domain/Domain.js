@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { useSelector } from "react-redux";
 
@@ -13,12 +14,24 @@ function Domain({ history, search }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-
   const isRadioSelected = (value) => selectedRadioBtn === value;
 
   const handleRadioClick = (e) => setSelectedRadioBtn(e.target.value);
 
   const handleRange = (e) => setSelectedRange(e.target.value);
+
+  const startGettingNames = async () => {
+    await axios.post("/api/names/", {
+      classification: selectedRadioBtn,
+      iteractions: selectedRange
+    }).then(res => {
+      console.log(res.data);
+    }
+    ).catch(err => {
+      console.log(err);
+    }
+    );
+  }
 
   return (
     <MainScreen title={`Bem vindo(a) de volta ${userInfo && userInfo.name}..`}>
@@ -26,18 +39,18 @@ function Domain({ history, search }) {
       <h3>Selecione o sexo</h3>
       <input
         type="radio"
-        value="male"
+        value="M"
         name="male"
-        checked={isRadioSelected('male')}
+        checked={isRadioSelected('M')}
         onChange={handleRadioClick}
         style={{ marginBottom: "1rem" }}
       /> Masculino
       <br />
       <input
         type="radio"
-        value="female"
+        value="F"
         name="female"
-        checked={isRadioSelected('female')}
+        checked={isRadioSelected('F')}
         onChange={handleRadioClick}
         style={{ marginBottom: "1rem" }} /> Feminino
       <h3>Selecione a quantidade de interações</h3>
@@ -57,7 +70,11 @@ function Domain({ history, search }) {
       </div>
       <br />
       <Link to="/names">
-        <Button style={{ marginLeft: 10, marginBottom: 6 }} size="lg">
+        <Button
+          style={{ marginLeft: 10, marginBottom: 6 }}
+          size="lg"
+          onClick={startGettingNames}
+        >
           Iniciar
         </Button>
       </Link>
