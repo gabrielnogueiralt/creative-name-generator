@@ -21,11 +21,14 @@ function Domain({ history, search }) {
   const handleRange = (e) => setSelectedRange(e.target.value);
 
   const startGettingNames = async () => {
-    await axios.post("/api/names/", {
+    const payload = {
       classification: selectedRadioBtn,
-      iteractions: selectedRange
-    }).then(res => {
+      iterations: selectedRange
+    }
+    console.log('payload', payload);
+    await axios.post("/api/names/", payload).then(async res => {
       console.log(res.data);
+      await localStorage.setItem("names", JSON.stringify(res.data));
     }
     ).catch(err => {
       console.log(err);
